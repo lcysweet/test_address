@@ -5,3 +5,6 @@ class TestLogin:
 
     def test_login02(self):
         assert 0
+
+    def test_login02(self):
+        assert 0
