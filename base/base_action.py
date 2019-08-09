@@ -72,3 +72,4 @@ class BaseAction:
         """
         feature = By.XPATH, "//*[contains(@text,'" + content + "')]"
         return self.find_element(feature, 5, 0.1).text
+        # return self.find_element(By.XPATH,"//*[contains(@text,'" + content + "')]").text
