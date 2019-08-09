@@ -1,0 +1,53 @@
+test_login:
+
+  # 正确的账号密码
+  test_login001:
+    phone: "18513107283"
+    password: "123456"
+    expect: "登录成功"
+
+  # 正确的账号错误的密码
+  test_login002:
+    phone: "18513107283"
+    password: "12345"
+    expect: "密码错误"
+
+#  # 账号后+空格
+#  test_login003:
+#    phone: "18513107283 "
+#    password: "123456"
+#    expect: "登录成功"
+#
+#  # 账号前+空格
+#  test_login004:
+#    phone: " 18513107283 "
+#    password: "123456"
+#    expect: "账号不存在"
+#
+#  # 密码后+空格
+#  test_login005:
+#    phone: "18513107283"
+#    password: "123456 "
+#    expect: "密码错误"
+#
+#  # 密码前+空格
+#  test_login006:
+#    phone: " 18513107283"
+#    password: " 123456"
+#    expect: "密码错误"
+#
+#  # 账号为空007
+#  # 密码为空008
+#
+#  # 多一位数手机号
+#  test_login009:
+#    phone: "185131072831"
+#    password: "123456"
+#    expect: "账号不存在"
+#
+#  # 不符合规则手机号
+#  test_login010:
+#    phone: "123131072831"
+#    password: "123456"
+#    expect: "账号不存在"
+
