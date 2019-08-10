@@ -24,6 +24,3 @@ class TestLogin:
         self.page.login_and_sign_up_page.input_password(password)
         self.page.login_and_sign_up_page.click_login()
         assert self.page.login_and_sign_up_page.find_toast(expect)
-
-
-的工资如果的公子哥
