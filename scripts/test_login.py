@@ -26,3 +26,4 @@ class TestLogin:
         assert self.page.login_and_sign_up_page.find_toast(expect)
 
 
+的工资如果的公子哥
