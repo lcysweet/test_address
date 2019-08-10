@@ -28,6 +28,8 @@ class LoginAndSignUpPage(BaseAction):
     def click_login(self):
         self.click(self.login_button)
 
+
+    # 判断 登录后toast文本内容
     @allure.step(title='判断登录后toast文本')
     def is_login_toast(self, content):
         try:
@@ -35,3 +37,24 @@ class LoginAndSignUpPage(BaseAction):
             return True
         except Exception as e:
             return False
+
+    # 判断 登录按钮是否可用
+    @allure.step(title='判断登录按钮是否可用')
+    def is_login_enabled(self,attribute):
+        """
+        判断 登录按钮中的 enabled 属性值 是不是 可用的
+        true 表示可用
+        false 表示不可用
+        :return: 是否可用
+        """
+        return self.find_element(self.login_button).get_attribute(attribute) == "true"
+
+        # if self.find_element(self.login_button).get_attribute("enabled") == "true":
+        #     return True
+        # else:
+        #     return False
+        # try:
+        #     self.find_get_attribute(self.login_button)
+        #     return True
+        # except Exception as e:
+        #     return False

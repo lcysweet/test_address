@@ -1,0 +1,11 @@
+test_login_if:
+  # 账号为空007
+  test_login007:
+    phone: ""
+    password: "123456"
+
+  # 密码为空008
+  test_login008:
+    phone: "18513107283"
+    password: ""
+
