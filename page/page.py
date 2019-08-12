@@ -1,3 +1,5 @@
+from page.address_info_page import TestAddressInfoPage
+from page.address_list_page import TestAddressListPage
 from page.home_page import HomePage
 from page.login_and_sign_up_page import LoginAndSignUpPage
 from page.mine_page import MinePage
@@ -28,3 +30,13 @@ class Page:
     @property
     def setting_page(self):
         return SettingPage(self.driver)
+
+    # 收货人地址
+    @property
+    def address_list_page(self):
+        return TestAddressListPage(self.driver)
+
+# 收货人信息
+    @property
+    def address_info_page(self):
+        return TestAddressInfoPage(self.driver)

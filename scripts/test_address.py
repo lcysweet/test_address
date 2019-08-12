@@ -21,7 +21,7 @@ class TestAddress:
         # 我的 点击 设置
         self.page.mine_page.click_setting()
 
-        # 判断 是否已登录
+        # 1-判断 是否已登录
         if not self.page.setting_page.is_logined():
             # 如果没有登录，此时页面会来到登录页面，直接输入用户名和密码即可
             # 登录 输入用户名
@@ -34,8 +34,26 @@ class TestAddress:
             assert self.page.login_and_sign_up_page.is_login_toast("登录成功")
             print("判断 是否已登录成功")
 
-        # 点击地址管理
+        # 2-点击地址管理
         self.page.mine_page.click_address()
         print("点击地址管理")
+        # 3-点击新建收货地址
+        self.page.address_list_page.click_new_address()
+        # 4-填写 收货人姓名
+        self.page.address_info_page.input_consignee_name("李春燕")
+        # 5-填写 收货人手机号
+        self.page.address_info_page.input_consignee_mobile("18513107283")
+        # 6-选择 区域
+            # 6-1 选择省
+            # 6-2 选择市/县
+            # 6-3 选择区
+            # 6-4 选择镇/街道
+            # 6-5 确定
+
+        # 7-填写 详细地址
+        self.page.address_info_page.input_consignee_address("霍营地铁 龙跃苑东四区")
+        # 8-点击 保存地址按钮
+        self.page.address_info_page.click_consignee_save()
+
 
 

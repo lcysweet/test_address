@@ -37,6 +37,16 @@ class BaseAction:
         by, value = feature
         element = WebDriverWait(self.driver, timeout, poll).until(lambda x: x.find_elements(by, value))
         return element
+        # 点击
+
+    def clicks(self, feature, timeout=10.0, poll=1.0):
+        """
+        根据传进来的特征，去找对应的元素，并且点击
+        :param feature: 特征
+        :param timeout: 超时时间
+        :param poll: 每多久照一次
+        """
+        self.find_elements(feature, timeout, poll).click()
     # 点击
     def click(self, feature, timeout=10.0, poll=1.0):
         """
@@ -79,7 +89,7 @@ class BaseAction:
         return self.find_element(feature, 5, 0.1).text
         # return self.find_element(By.XPATH,"//*[contains(@text,'" + content + "')]").text
 
-    # 滑动
+    # 滑动一次
     def swipe_one_time(self,dir="bottom"):
         """
         滑动 半屏 从4/3 到 4/1
