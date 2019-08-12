@@ -1,5 +1,6 @@
 from page.address_info_page import TestAddressInfoPage
 from page.address_list_page import TestAddressListPage
+from page.address_region_page import TestAddressRegionPage
 from page.home_page import HomePage
 from page.login_and_sign_up_page import LoginAndSignUpPage
 from page.mine_page import MinePage
@@ -40,3 +41,8 @@ class Page:
     @property
     def address_info_page(self):
         return TestAddressInfoPage(self.driver)
+
+# 收货人 选择区域
+    @property
+    def address_region_page(self):
+        return TestAddressRegionPage(self.driver)

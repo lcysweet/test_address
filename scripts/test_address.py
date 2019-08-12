@@ -43,17 +43,20 @@ class TestAddress:
         self.page.address_info_page.input_consignee_name("李春燕")
         # 5-填写 收货人手机号
         self.page.address_info_page.input_consignee_mobile("18513107283")
-        # 6-选择 区域
-            # 6-1 选择省
-            # 6-2 选择市/县
-            # 6-3 选择区
-            # 6-4 选择镇/街道
-            # 6-5 确定
-
+        # 6-点击 收货人区域
+        self.page.address_info_page.click_consignee_region()
+        # 6-1 随机 选择区域
+        self.page.address_region_page.click_random_city()
+        # 6-2 确定
+        self.page.address_region_page.click_city_commit()
         # 7-填写 详细地址
-        self.page.address_info_page.input_consignee_address("霍营地铁 龙跃苑东四区")
+        self.page.address_info_page.input_consignee_address("龙跃苑东四区 5号楼 1单元")
         # 8-点击 保存地址按钮
         self.page.address_info_page.click_consignee_save()
+        # 9-断言 收货地址toast添加成功
+        assert self.page.address_info_page.is_save_toast("添加成功")
+        print("断言 添加收货地址")
+
 
 
 

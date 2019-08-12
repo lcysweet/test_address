@@ -14,8 +14,8 @@ class TestAddressInfoPage(BaseAction):
     # 默认收获地址
     set_default_sth_button = By.ID,"com.tpshop.malls:id/set_default_sth"
     # 保存收货地址按钮
-    save_tv_button = By.ID, "com.tpshop.malls:id/save_tv"
-
+    # save_tv_button = By.ID, "com.tpshop.malls:id/save_tv"
+    save_tv_button = By.XPATH, "//*[@text='保存收货地址']"
 
 
     @allure.step(title="输入-收货人信息")
@@ -37,3 +37,13 @@ class TestAddressInfoPage(BaseAction):
     @allure.step(title="点击 保存收货地址按钮")
     def click_consignee_save(self):
         self.click(self.save_tv_button)
+
+    # 判断 添加收货人地址是否成功toast文本内容
+    @allure.step(title='判断 收货人是否添加成功toast文本')
+    def is_save_toast(self, content):
+        # self.is_toast_success(content)
+        try:
+            self.find_toast(content)
+            return True
+        except Exception:
+            return False
