@@ -25,19 +25,51 @@ class MinePage(BaseAction):
     def click_setting(self):
         self.click(self.setting_button)
 
-    # 我的 - 地址管理
+    # 3-我的 - 地址管理
+    @allure.step(title="我的 点击 - 地址管理")
+    def click_address(self):
+        self.click_swipe_page_while(self.address_button)
+
+    """
+    # 2-我的 - 地址管理
     @allure.step(title="我的 点击 - 地址管理")
     def click_address(self):
         # 如果有就点击地址管理
         # 如果没有就滑动
         while True:
+            # 获取当前的页面元素
+            source = self.driver.page_source
             try:
                 # find_element :根据元素特征找到元素并返回
                 self.find_element(self.address_button).click()
                 # self.click(self.click_address)
                 break
-            except Exception as e:
-                # 1-获取屏幕分辨率,根据分辨率宽和高  从 3/4 滑动到 1/4
+            except Exception:
+                # 调用封装滑动
+                self.swipe_page_one_time()
+                # 4 判断 当前的页面和之前的保存的页面是否一致
+                if source == self.driver.page_source:
+                    # 滑动到底部
+                    raise Exception("滑动到底")
+        """
+
+"""
+    # 1-我的 - 地址管理
+    @allure.step(title="我的 点击 - 地址管理")
+    def click_address(self):
+        # 如果有就点击地址管理
+        # 如果没有就滑动
+        while True:
+            # 获取当前的页面元素
+            source = self.driver.page_source
+            try:
+                # find_element :根据元素特征找到元素并返回
+                self.find_element(self.address_button).click()
+                # self.click(self.click_address)
+                break
+            except Exception:
+                # 调用封装滑动
+                 # 1-获取屏幕分辨率,根据分辨率宽和高  从 3/4 滑动到 1/4
                 window_size = self.driver.get_window_size()
                 # 屏幕宽度["width"]
                 width = window_size["width"]
@@ -52,4 +84,8 @@ class MinePage(BaseAction):
 
                 # 3- 开始滑动swipe:
                 self.driver.swipe(start_x, start_y, end_x, end_y, 3000)
-        print("滑动循环已退出")
+                # 4 判断 当前的页面和之前的保存的页面是否一致
+                if source == self.driver.page_source:
+                    # 滑动到底部
+                    raise Exception("滑动到底")
+        """

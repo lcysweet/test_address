@@ -32,8 +32,10 @@ class TestAddress:
             self.page.login_and_sign_up_page.click_login()
             # 登录成功后会自动的回到，"我的"页面
             assert self.page.login_and_sign_up_page.is_login_toast("登录成功")
+            print("判断 是否已登录成功")
 
         # 点击地址管理
         self.page.mine_page.click_address()
+        print("点击地址管理")
 
 
