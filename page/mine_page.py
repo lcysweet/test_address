@@ -10,12 +10,46 @@ class MinePage(BaseAction):
     # 设置
     setting_button = By.ID,"com.tpshop.malls:id/setting_btn"
 
-    # 我的 - 设置
-    def click_setting(self):
-        self.click(self.setting_button)
+    # 地址管理
+    address_button = By.XPATH,"//*[@text='地址管理']"
+
 
     # 我的 - 登录/注册
-    @allure.step(title="点击登录/注册按钮")
+    @allure.step(title="我的 点击 -登 录/注册按钮")
     def click_login_and_sign_up(self):
         self.click(self.login_and_sign_up_button)
         # WebDriverWait(self.driver,  timeout=10.0, poll=1.0).until(lambda x: x.find_elements(By.ID,"com.tpshop.malls:id/head_img")).click()
+
+    # 我的 - 设置
+    @allure.step(title="我的 点击 - 设置")
+    def click_setting(self):
+        self.click(self.setting_button)
+
+    # 我的 - 地址管理
+    @allure.step(title="我的 点击 - 地址管理")
+    def click_address(self):
+        # 如果有就点击地址管理
+        # 如果没有就滑动
+        while True:
+            try:
+                # find_element :根据元素特征找到元素并返回
+                self.find_element(self.address_button).click()
+                # self.click(self.click_address)
+                break
+            except Exception as e:
+                # 1-获取屏幕分辨率,根据分辨率宽和高  从 3/4 滑动到 1/4
+                window_size = self.driver.get_window_size()
+                # 屏幕宽度["width"]
+                width = window_size["width"]
+                # 屏幕高度["height"]
+                height = window_size["height"]
+
+                # 2-坐标点 元素开始的坐标(x,y) --元素结束的坐标(x,y)
+                start_x = width * 0.5
+                start_y = height * 0.75
+                end_x = start_x
+                end_y = height * 0.25
+
+                # 3- 开始滑动swipe:
+                self.driver.swipe(start_x, start_y, end_x, end_y, 3000)
+        print("滑动循环已退出")

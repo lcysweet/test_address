@@ -1,4 +1,6 @@
 import time
+import sys
+sys.path.append('D:\\Projects\workes\\test_address')
 from base.base_driver import init_driver
 from page.page import Page
 
@@ -30,5 +32,8 @@ class TestAddress:
             self.page.login_and_sign_up_page.click_login()
             # 登录成功后会自动的回到，"我的"页面
             assert self.page.login_and_sign_up_page.is_login_toast("登录成功")
+
+        # 点击地址管理
+        self.page.mine_page.click_address()
 
 

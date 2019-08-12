@@ -1,10 +1,9 @@
-import random
-import time
-import allure
-import pytest
 import sys
 sys.path.append('D:\\Projects\workes\\test_address')
 from base.base_driver import init_driver
+import random
+import time
+import pytest
 from page.page import Page
 from base.base_analyze import analyze_data
 
@@ -44,8 +43,9 @@ class TestLogin:
         self.page.login_and_sign_up_page.click_login()
         # 断言 toast
         assert self.page.login_and_sign_up_page.is_login_toast(toast)
+        print("判断 登录参数化")
 
-     # 2判断 登录名和密码有一个为空登录按钮是否可用状态
+    # 2判断 登录名和密码有一个为空登录按钮是否可用状态
     @pytest.mark.parametrize("args", analyze_data("login_data_if", "test_login_if"))
     def test_login_if(self, args):
         # 获取数据
@@ -61,6 +61,7 @@ class TestLogin:
         self.page.login_and_sign_up_page.input_password(password)
         # 判断登录按钮是否可用
         assert not self.page.login_and_sign_up_page.is_login_enabled("enabled")
+        print("判断 登录按钮 是否可用")
         # if self.page.login_and_sign_up_page.is_login_enabled() == False:
         #     assert True
         # else:
@@ -82,7 +83,7 @@ class TestLogin:
         self.page.login_and_sign_up_page.click_show_password_eys()
         # 找到 输入的密码
         assert self.page.login_and_sign_up_page.is_password_eys_show(password)
-
+        print("判断 密码眼睛 是否可用")
         # # 判断-显示密码按钮 是否可用
         # if not self.page.login_and_sign_up_page.is_password_eys_show(password):
         #     # 点击显示密码

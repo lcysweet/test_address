@@ -45,6 +45,7 @@ class LoginAndSignUpPage(BaseAction):
         except Exception as e:
             return False
 
+
     # 判断 登录按钮是否可用
     @allure.step(title='判断登录按钮是否可用')
     def is_login_enabled(self,attribute):
@@ -64,6 +65,7 @@ class LoginAndSignUpPage(BaseAction):
         #     return True
         # except Exception as e:
         #     return False
+
 
     def is_password_eys_show(self,password):
         """
