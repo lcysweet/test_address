@@ -1,10 +1,9 @@
 import random
 import time
-
 import allure
 import pytest
 import sys
-sys.path.append('D:\\Projects\workes\\user_login')
+sys.path.append('D:\\Projects\workes\\test_address')
 from base.base_driver import init_driver
 from page.page import Page
 from base.base_analyze import analyze_data
@@ -44,7 +43,7 @@ class TestLogin:
         # 登登录 - 点击 登录
         self.page.login_and_sign_up_page.click_login()
         # 断言 toast
-        assert self.page.login_and_sign_up_page.find_toast(toast)
+        assert self.page.login_and_sign_up_page.is_login_toast(toast)
 
      # 2判断 登录名和密码有一个为空登录按钮是否可用状态
     @pytest.mark.parametrize("args", analyze_data("login_data_if", "test_login_if"))
