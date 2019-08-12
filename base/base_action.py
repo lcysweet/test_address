@@ -80,7 +80,7 @@ class BaseAction:
         # return self.find_element(By.XPATH,"//*[contains(@text,'" + content + "')]").text
 
     # 滑动
-    def swipe_page_one_time(self,dir="bottom"):
+    def swipe_one_time(self,dir="bottom"):
         """
         滑动 半屏 从4/3 到 4/1
         :Parma dir:方向
@@ -120,19 +120,40 @@ class BaseAction:
         else:
             raise Exception("请输入正确的参数 top/bottom/lef/right")
 
-    # 循环滑动  默认从下往上循环滑动
-    def click_swipe_page_while(self,element, timeout=10.0, poll=1.0):
+    # 循环滑动 边滑边找
+    def swipe_find(self,feature,dir="bottom"):
+        """
+        边滑边找,如果找到就返回,如果没有就抛异常
+        :param feature:元素特征
+        :return:返回元素
+        """
+        while True:
+            # 获取当前的页面元素
+            source = self.driver.page_source
+            try:
+                # 根据元素特征找到元素并返回
+                return self.find_element(feature)
+            except Exception:
+                # 调用封装滑动
+                self.swipe_one_time(dir)
+                # 4 判断 当前的页面和之前的保存的页面是否一致
+                if source == self.driver.page_source:
+                    # 滑动到底部
+                    raise Exception("滑动到底")
+
+    # 循环滑动点击 默认从下往上循环滑动
+    def click_swipe_while(self,feature,dir="bottom"):
         # 如果没有就滑动
         while True:
             # 获取当前的页面元素
             source = self.driver.page_source
             try:
                 # find_element :根据元素特征找到元素并返回
-                self.find_element(element,timeout, poll).click()
+                self.find_element(feature).click()
                 break
             except Exception:
                 # 调用封装滑动
-                self.swipe_page_one_time()
+                self.swipe_one_time(dir)
                 # 4 判断 当前的页面和之前的保存的页面是否一致
                 if source == self.driver.page_source:
                     # 滑动到底部

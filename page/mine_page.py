@@ -28,7 +28,14 @@ class MinePage(BaseAction):
     # 3-我的 - 地址管理
     @allure.step(title="我的 点击 - 地址管理")
     def click_address(self):
-        self.click_swipe_page_while(self.address_button)
+        self.swipe_find(self.address_button).click()
+
+    """
+     # 1-我的 - 地址管理
+    @allure.step(title="我的 点击 - 地址管理")
+    def click_address(self):
+        self.click_swipe_while(self.address_button)
+    """
 
     """
     # 2-我的 - 地址管理
@@ -46,7 +53,7 @@ class MinePage(BaseAction):
                 break
             except Exception:
                 # 调用封装滑动
-                self.swipe_page_one_time()
+                self.swipe_one_time()
                 # 4 判断 当前的页面和之前的保存的页面是否一致
                 if source == self.driver.page_source:
                     # 滑动到底部
